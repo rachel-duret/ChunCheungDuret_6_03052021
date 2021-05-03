@@ -28,6 +28,7 @@ exports.login = (req, res, next) => {
         email: email
     }})
     .then((user) => {
+        console.log(user);
         if(!user) {
              res.json({error:'User does not exist !'})
         }
@@ -36,14 +37,15 @@ exports.login = (req, res, next) => {
             if(!match) {
                  res.json({error:'Wrong email or password !'})
             }
-            let accessToken = sign(
+            const accessToken = sign(
                 {username:username},
                 'RANDOM_TOKEN_SECRET',
                 { expiresIn: '24h' }
             );
             res.json({
                 username:username,
-                accessToken
+                token:accessToken,
+                id:user.id
             });
         })
         
@@ -51,6 +53,9 @@ exports.login = (req, res, next) => {
     .catch((error) =>{
         res.status(500).json({error})
     })
-    
-
 }
+exports.info = (req, res, next) => {
+    const user = req.user
+    res.json(user)
+    
+} 

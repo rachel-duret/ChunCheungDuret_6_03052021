@@ -27,3 +27,7 @@ exports.createComment = (req, res, next) =>{
         res.json({error});
     });
 };
+
+exports.deleteOneComment = (req, res, next) =>{
+    const user = req.user;
+}

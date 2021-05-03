@@ -5,32 +5,70 @@ import CreatePost from './pages/CreatePost';
 import Post from './pages/Post';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import {useHistory} from 'react-router-dom';
+//import {useHistory} from 'react-router-dom';
+import {AuthContext} from './helpers/AuthContext'
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 
 
 
 function App() {
-  let history = useHistory();
+  //首先设置authState 为没有
+  const [authState, setAuthState] = useState({
+    username:"",
+    id:0,
+    status:false
+  });
+
+  useEffect(() => {
+    //检测本地存储是否有token， 有的话就把authState 变成true
+    axios.get('http://localhost:8000/auth/info',
+    {
+      headers:{
+        accessToken: localStorage.getItem("accessToken"),              
+      },
+    })
+    .then((response) => {
+    
+      if(response.data.error){
+        setAuthState({...authState, status:false});
+      }else{
+        setAuthState({
+          username:response.data.username,
+          id:response.data.id,
+          status:true
+        });
+      }
+    });  
+  }, [])
+
   const logout = () =>{
     localStorage.removeItem("accessToken");
-    history.push('/login');  
+     setAuthState({
+      username:"",
+      id:0,
+      status:false
+     });
   }
   
   return (
     <div className="App">
-
-        <Router>
+      <AuthContext.Provider value={{ authState, setAuthState}}>
+      <Router>
           <div className="navbar">
-          {! localStorage.getItem("accessToken")? (
+          <Link to="/">Home Page</Link>
+          <Link to="/createpost">Create A Post</Link>     
+          {!authState.status ? (
           <>
           <Link to="/signup">Singup</Link>
           <Link to="/login">Login</Link>
           </>
-          ): (
-            <button onClick={logout} className="logout">Logout</button>
-          )}     
-          <Link to="/">Home Page</Link>
-          <Link to="/createpost">Create A Post</Link>        
+          ) :(
+            <button onClick={logout}>Logout</button>
+            
+          )}  
+          
+          <h1>{authState.username}</h1>     
           </div>
           
           <Switch>
@@ -41,6 +79,9 @@ function App() {
             <Route path = "/login" exact component={Login} />
           </Switch>
         </Router>
+      </AuthContext.Provider>
+
+        
 
       
     </div>

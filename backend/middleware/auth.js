@@ -5,7 +5,7 @@ const validateToken = (req, res, next) => {
   const username = req.header('username')
   console.log(username);
 
-  if (!accessToken ) return res.json({ error: "User not logged in!" });
+  if (!accessToken ) return res.status(401).json({ message: "User not logged in!" });
 
   try {
     const validToken = verify(accessToken, 'RANDOM_TOKEN_SECRET');
@@ -15,8 +15,8 @@ const validateToken = (req, res, next) => {
     if (validToken) {
       return next();
     }
-  } catch (err) {
-    return res.json({ error: err });
+  } catch(err)  {
+    return res.json({error:err });
   }
 };
 

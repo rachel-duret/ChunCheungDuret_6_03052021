@@ -10,7 +10,7 @@ function Home() {
       useEffect(()=>{
         axios.get("http://localhost:8000/posts")
         .then((response)=>{
-          console.log(response.data);
+         
           setListOfPosts(response.data)
         })
       }, []);

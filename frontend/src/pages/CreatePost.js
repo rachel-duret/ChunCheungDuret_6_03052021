@@ -16,14 +16,14 @@ function CreatePost() {
     const onSubmit =(data)=>{
         axios.post("http://localhost:8000/posts",data,{
             headers:{
-                accessToken: localStorage.getItem("accessToken"),
-                
+                accessToken: localStorage.getItem("accessToken"),              
               }
         })
         .then((response)=>{
             if(response.data.error){// response.status
-                alert("Login Please !");
-                history.push('/login'); 
+                console.log(response);
+                alert("Login Please!");
+                //history.push('/login'); 
             }else{
                 history.push('/'); 
             }                   
