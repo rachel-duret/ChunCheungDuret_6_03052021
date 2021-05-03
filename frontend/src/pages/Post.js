@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
+import {AuthContext} from '../helpers/AuthContext'
 
 
 
@@ -11,6 +12,8 @@ function Post() {
   const [postObject, setPostObject] = useState({});
   const  [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
+  const {authState} = useContext(AuthContext);
+  
 
   useEffect(()=>{
     axios.get(`http://localhost:8000/posts/byId/${id}`)
@@ -54,15 +57,22 @@ function Post() {
     })
   }
   const deleteComment = (id) =>{ 
+    console.log(id);
   
-    axios.delete(`http://localhost:3001/comments/${id}`,{
+    axios.delete(`http://localhost:8000/comments/${id}`,{
       headers:{
         accessToken: localStorage.getItem("accessToken"),
         
       },
     })
     .then(()=>{
-      alert('Comment deleted !')
+     setComments(
+       comments.filter((val) => {
+       console.log(val);
+         return val.id !=id;
+         
+       })
+     )
     })
 
   }
@@ -94,7 +104,14 @@ function Post() {
                {comment.commentBody}
                <p>Username: {comment.username}</p>
                <p>Date: {comment.createdAt}</p>
-               <button onClick={deleteComment}>Delete</button>
+             
+               { 
+               authState.username ===comment.username 
+               && 
+               (<button onClick={() => {
+                 deleteComment(comment.id);
+               }}>Delete</button>)
+               }
                </div>
            })}
          </div>

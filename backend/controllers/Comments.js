@@ -29,5 +29,15 @@ exports.createComment = (req, res, next) =>{
 };
 
 exports.deleteOneComment = (req, res, next) =>{
-    const user = req.user;
+    const commentId = req.params.commentId
+    console.log('id'+commentId);
+    Comments.destroy( {
+        where: {
+            id: commentId,
+        }
+    })
+    .then(() => {
+        res.json('Comment Deleted Successfully !')
+    })
+    
 }

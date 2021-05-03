@@ -9,7 +9,7 @@ const { validateToken } = require('../middleware/auth');
 
 router.get('/:postId', commentCtrl.findAllComments);
 router.post('/', validateToken, commentCtrl.createComment);
-
+router.delete('/:commentId', validateToken, commentCtrl.deleteOneComment)
 
 
 

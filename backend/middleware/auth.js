@@ -10,7 +10,7 @@ const validateToken = (req, res, next) => {
   try {
     const validToken = verify(accessToken, 'RANDOM_TOKEN_SECRET');
     req.user = validToken;
-   console.log(req.user);
+  
     
     if (validToken) {
       return next();
