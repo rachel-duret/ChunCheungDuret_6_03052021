@@ -38,9 +38,8 @@ exports.login = (req, res, next) => {
                  res.json({error:'Wrong email or password !'})
             }
             const accessToken = sign(
-                {username:username},
-                'RANDOM_TOKEN_SECRET',
-                { expiresIn: '24h' }
+                { username:username, id:user.id },
+                'RANDOM_TOKEN_SECRET'             
             );
             res.json({
                 username:username,

@@ -1,11 +1,11 @@
 'use stric'
 
-const {Posts} = require('../models');
+const {Posts, Likes} = require('../models');
 
 
 
 exports.getAllPost = (req, res, next) => {
-    Posts.findAll()
+    Posts.findAll({include: [Likes]})// 可以把Likes里面的数据一起找到然后发送给前端。
     .then((posts) => {
         res.status(200).json(posts)
     })

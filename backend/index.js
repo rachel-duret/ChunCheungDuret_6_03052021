@@ -33,6 +33,8 @@ const CommentsRouter = require('./routes/Comments');
 app.use('/Comments', CommentsRouter);
 const UsersRouter = require('./routes/Users');
 app.use('/auth', UsersRouter);
+const LikesRouter = require('./routes/Likes');
+app.use('/likes', LikesRouter);
 
 
 

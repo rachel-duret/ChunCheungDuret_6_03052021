@@ -57,7 +57,6 @@ function Post() {
     })
   }
   const deleteComment = (id) =>{ 
-    console.log(id);
   
     axios.delete(`http://localhost:8000/comments/${id}`,{
       headers:{
