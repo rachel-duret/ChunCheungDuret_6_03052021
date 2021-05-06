@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import{useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 
 function Home() {
     const [listOfPosts, setListOfPosts] = useState([]);
@@ -56,15 +57,18 @@ function Home() {
             </div>
 
             <div className="footer">
-              {value.username}{""}
-          
-              <button onClick={() => {
+              <p>
+              {value.username}
+              </p>
+              <div className="likeContainer">
+              <ThumbUpIcon onClick={() => {
                 likePost(value.id)
-              }}>
-                {""}
-                Like
-                </button>
+              }} />
                 <p>{value.Likes.length}</p>
+              </div>
+              
+             
+              
             </div>
           </div>;
         })}

@@ -5,15 +5,22 @@ import * as yup from 'yup';
 import {useHistory} from 'react-router-dom';
 
 
+
 function CreatePost() {
     let history = useHistory()
     const initialValues ={
         title: "",
         postText:"",
         username:"",
+        imageUrl:null,
     };
 
+
+
     const onSubmit =(data)=>{
+        /* let data = new initialValues();
+        data.append('imageUrl', values.imageUrl) */
+        console.log(data);
         axios.post("http://localhost:8000/posts",data,{
             headers:{
                 accessToken: localStorage.getItem("accessToken"),              
@@ -34,7 +41,10 @@ function CreatePost() {
         title: yup.string().required('You must put a title!'),
         postText: yup.string().required(),
         username: yup.string().min(3).max(20).required(),
+     
     })
+
+
 
 
 
@@ -59,14 +69,15 @@ function CreatePost() {
                     name="postText" 
                     placeholder="(Ex. Post...)"
                     />
-
-                    <label>Username:</label>
+                    
+                   <label>Username:</label>
                     <ErrorMessage name="username" component="span" />
                     <Field 
                     id="inputCreatePost" 
                     name="username" 
                     placeholder="(Ex. Rachel...)"
                     />
+                     
                     <button type="submit">Create Post</button>
                 </Form>
 

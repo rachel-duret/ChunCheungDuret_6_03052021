@@ -1,7 +1,7 @@
 'use stric'
 
 const {Posts, Likes} = require('../models');
-
+const fs = require('fs');
 
 
 exports.getAllPost = (req, res, next) => {
@@ -18,7 +18,7 @@ exports.getAllPost = (req, res, next) => {
 exports.createPost = (req, res, next) => {
     const post = req.body;
     const username = req.user.username
-    console.log(username);
+    
     Posts.create(post)
     .then((post) => {
         res.status(201).json({post})
@@ -37,4 +37,18 @@ exports.findOnePost = (req, res, next) => {
     .catch((error) => {
         res.status(400).json({error});
     });
+}
+
+
+exports.deleteOnePost = (req, res, next) => {
+    const postId = req.params.id
+    console.log(postId);
+    Posts.destroy({
+        where: {
+            id: postId,
+        }
+    })
+    .then(() => {
+        res.json('Post Deleted Suceessfully !')
+    })
 }

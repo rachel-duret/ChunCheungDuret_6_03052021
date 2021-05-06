@@ -6,6 +6,8 @@ import {AuthContext} from '../helpers/AuthContext'
 
 
 
+
+
 function Post() {
   let history = useHistory()
   let {id} = useParams();  
@@ -19,6 +21,7 @@ function Post() {
     axios.get(`http://localhost:8000/posts/byId/${id}`)
       .then((response)=>{
         setPostObject(response.data);
+        console.log(response);
       },);
 
       axios.get(`http://localhost:8000/comments/${id}`)
@@ -56,19 +59,37 @@ function Post() {
       }  
     })
   }
+
+/////////      fonction for delete one post
+  const deleteOnePost = (id) => {
+    console.log(id);
+    axios.delete(`http://localhost:8000/posts/byId/${id}`, {
+      headers:{
+        accessToken: localStorage.getItem("accessToken"),      
+      },
+    })
+    .then((response) => {
+      console.log(response);
+      setPostObject({});
+       history.push('/');  
+    })
+
+  }
+
+
+  ////////      fonction for delete one comment    ///////////////
   const deleteComment = (id) =>{ 
   
     axios.delete(`http://localhost:8000/comments/${id}`,{
       headers:{
-        accessToken: localStorage.getItem("accessToken"),
-        
+        accessToken: localStorage.getItem("accessToken"),      
       },
     })
     .then(()=>{
      setComments(
        comments.filter((val) => {
        console.log(val);
-         return val.id !=id;
+         return val.id !==id;
          
        })
      )
@@ -83,7 +104,17 @@ function Post() {
          <div className="post" id="individual">
            <div className="title"> {postObject.title}</div>
            <div className="body"> {postObject.postText}</div>
-           <div className="footer"> {postObject.username}</div>
+           <div className="footer"> 
+           {postObject.username}
+           {
+              authState.username ===postObject.username 
+              &&
+            (<button onClick={() => {
+              deleteOnePost(postObject.id)
+            }}>Delete</button>)
+           }
+         
+           </div>
          </div>
        </div>
        <div className="rightSide">

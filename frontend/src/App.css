@@ -1,5 +1,5 @@
 .App {
-  width: 100vw;
+  width: 100%;
   height: auto;
   display: flex;
   align-items: center;
@@ -20,7 +20,7 @@
 
 
 .post {
-  width: 400px;
+  width: 60%;
   height: 300px;
   border-radius: 10px;
   display: flex;
@@ -37,7 +37,8 @@
   cursor: pointer;
 }
 .post .title {
-  flex: 20%;
+  width: 100%;
+  height: 100px;
   border-bottom: 1px solid lightgray;
   background-color: rgb(64, 64, 121);
   display: grid;
@@ -46,21 +47,25 @@
 }
 
 .post .body {
-  flex: 60%;
-  display: grid;
-  place-content: center;
+width: 100%;
+height: 400px;
+margin: auto;
+
 }
 
 .post .footer {
-  flex: 20%;
+  width: 100%;
+  height: 100px;
   border-top: 1px solid lightgray;
   display: flex;
   align-items: center;
-  padding-left: 15px;
   background-color: rgb(82, 82, 122);
   color: white;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  justify-content: space-around;
+
+  
 }
 
 /* CREATE POST PAGE CSS */
@@ -111,62 +116,19 @@
 span {
   color: red;
 }
-.App {
-  width: 100vw;
-  height: auto;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
 
 body {
   margin: 0;
   padding: 0;
 }
 
-.post {
-  width: 400px;
-  height: 300px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  margin-top: 50px;
-  border: 1px solid lightgray;
-  font-family: Arial, Helvetica, sans-serif;
-
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
 
 .post:hover {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   cursor: pointer;
 }
-.post .title {
-  flex: 20%;
-  border-bottom: 1px solid lightgray;
-  background-color: rgb(82, 82, 122);
-  display: grid;
-  place-content: center;
-  color: white;
-}
 
-.post .body {
-  flex: 60%;
-  display: grid;
-  place-content: center;
-}
 
-.post .footer {
-  flex: 20%;
-  border-top: 1px solid lightgray;
-  display: flex;
-  align-items: center;
-  padding-left: 15px;
-  background-color: rgb(82, 82, 122);
-  color: white;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
 
 /* CREATE POST PAGE CSS */
 
@@ -226,7 +188,9 @@ span {
   height: 70px;
   background-color: rgb(82, 82, 122);
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -271,7 +235,7 @@ span {
 
 .addCommentContainer input,
 button {
-  width: 200px;
+  width: 100px;
   height: 50px;
   border-radius: 8px;
   border: none;
@@ -380,11 +344,16 @@ button {
 }
 .logout{
   margin-top: 15px;
-  height: 40px;
+  height: 20px;
   border: none;
   background-color: lightskyblue;
   border-radius: 5px;
   color: white;
   text-align: center;
   align-items: center;
+}
+
+.likeContainer{
+  display: flex;
+  
 }
