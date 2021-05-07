@@ -1,19 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import axios from 'axios';
 import{useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import {AuthContext} from '../helpers/AuthContext'
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 
 function Home() {
+
     const [listOfPosts, setListOfPosts] = useState([]);
+    const {authState} = useContext(AuthContext);
     let history = useHistory();// its an object
     /* API get */
       useEffect(()=>{
-        axios.get("http://localhost:8000/posts")
+
+        if ( !localStorage.getItem('accessToken')) {
+          history.push('/login')
+        } else{
+          axios.get("http://localhost:8000/posts")
         .then((response)=>{
          console.log(response.data);
           setListOfPosts(response.data)//后端添加include Likes， 所有现在ListOfPosts里面已经包含Likes的数据
-        })
+         })
+        }       
       }, []);
 
       const likePost = (postId) => {

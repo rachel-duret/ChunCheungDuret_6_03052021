@@ -17,181 +17,29 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
-
-.post {
-  width: 60%;
-  height: 300px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  margin-top: 50px;
-  border: 1px solid lightgray;
-  font-family: Arial, Helvetica, sans-serif;
-
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-
-.post:hover {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  cursor: pointer;
-}
-.post .title {
-  width: 100%;
-  height: 100px;
-  border-bottom: 1px solid lightgray;
-  background-color: rgb(64, 64, 121);
-  display: grid;
-  place-content: center;
-  color: white;
-}
-
-.post .body {
-width: 100%;
-height: 400px;
-margin: auto;
-
-}
-
-.post .footer {
-  width: 100%;
-  height: 100px;
-  border-top: 1px solid lightgray;
-  display: flex;
-  align-items: center;
-  background-color: rgb(82, 82, 122);
-  color: white;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  justify-content: space-around;
-
-  
-}
-
-/* CREATE POST PAGE CSS */
-
-.createPostPage {
-  font-family: Arial, Helvetica, sans-serif;
-  width: 100vw;
-  height: 70vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.formContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 500px;
-  height: auto;
-  padding: 20px;
-  border: 5px solid rgb(82, 82, 122);
-  border-radius: 5px;
-}
-
-.formContainer #inputCreatePost {
-  height: 40px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: 2px solid grey;
-  border-radius: 5px;
-  padding-left: 10px;
-  font-size: 20px;
-}
-
-.formContainer button {
-  margin-top: 15px;
-  height: 40px;
-  border: none;
-  background-color: lightskyblue;
-  border-radius: 5px;
-  color: white;
-}
-
-.formContainer button:hover {
-  cursor: pointer;
-  background-color: rgb(82, 82, 122);
-}
-
-span {
-  color: red;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-
-.post:hover {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  cursor: pointer;
-}
-
-
-
-/* CREATE POST PAGE CSS */
-
-.createPostPage {
-  font-family: Arial, Helvetica, sans-serif;
-  width: 100vw;
-  height: 70vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.formContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 500px;
-  height: auto;
-  padding: 20px;
-  border: 5px solid rgb(82, 82, 122);
-  border-radius: 5px;
-}
-
-.formContainer #inputCreatePost {
-  height: 40px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: 2px solid grey;
-  border-radius: 5px;
-  padding-left: 10px;
-  font-size: 20px;
-}
-
-.formContainer button {
-  margin-top: 15px;
-  height: 40px;
-  border: none;
-  background-color: lightskyblue;
-  border-radius: 5px;
-  color: white;
-  text-align: center;
-  align-items: center;
-}
-
-.formContainer button:hover {
-  cursor: pointer;
-  background-color: rgb(82, 82, 122);
-}
-
-span {
-  color: red;
-}
-
-/* NAVBAR */
-
+/* Header */
 .navbar {
   width: 100%;
-  height: 70px;
+  height: 10%;
   background-color: rgb(82, 82, 122);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   font-family: Arial, Helvetica, sans-serif;
+}
+.links{
+  flex: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.loggedContainer{
+  flex: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .navbar a {
@@ -200,123 +48,42 @@ span {
   color: white;
 }
 
-/* INDIVIDUAL POST */
-.postPage {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  height: 100%;
-}
 
-.leftSide {
-  flex: 50%;
-  height: calc(100vh - 70px);
-  display: grid;
-  place-items: center;
-}
-
-.rightSide {
-  flex: 50%;
-  height: calc(100vh - 70px);
-  display: grid;
-  place-items: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.rightSide .addCommentContainer {
-  flex: 20%;
-  width: 100%;
-  display: grid;
-  place-items: center;
-  margin-top: 25px;
-}
-
-.addCommentContainer input,
-button {
-  width: 100px;
-  height: 50px;
-  border-radius: 8px;
-  border: none;
-}
-
-.addCommentContainer button {
-  background-color: rgb(82, 82, 122);
-  color: white;
-}
-
-.addCommentContainer input {
-  border: 2px solid  rgb(82, 82, 122);
-}
-
-.rightSide .listOfComments {
-  flex: 80%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.listOfComments .comment {
-  width: 70%;
-  height: auto;
-  padding: 30px;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  margin-top: 20px;
-}
-
-#individual {
-  height: 500px;
-  width: 600px;
-}
-
-#individual .title,
-#individual .footer {
-  font-size: 30px;
-}
-
-#individual .body {
-  font-size: 25px;
-}
-
-/* LOGIN */
+/****************************************** Login Page ****************************************************************/
 
 .loginContainer {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: auto;
  
   justify-content: space-around;
   vertical-align: top;
 }
 .loginContainerRight{
-  width: 50%;
-  height: 100%;
+  width: 100%;
+  height: auto;
  
 }
 .logo{ 
-  width: 90%;
-  height: 50%;
+  width: 300px;
+  height: auto;
 
 }
 .loginContainerLeft{
-  width: 30%;
-  height: 100%;
+  width: 100%;
+  height: auto;
 
  
  
 }
 
-.loginCantainerLeft input, form
-button {
+.loginCantainerLeft input,button
+ {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 100%;
   height: 50px;
   border-radius: 8px;
   border: 1px solid rgb(82, 82, 122);
@@ -325,35 +92,12 @@ button {
 
 .loginCantainerLeft button {
   margin-top: 15px;
-  height: 40px;
+  padding-top: 15px;
   border: none;
   background-color: lightskyblue;
   border-radius: 5px;
   color: white;
   text-align: center;
   align-items: center;
-  
-}
-.formContainer button:hover {
-  cursor: pointer;
-  background-color: rgb(82, 82, 122);
-}
-
-.loginCantainerRigtht input {
-  border: 2px solid rgb(82, 82, 122);
-}
-.logout{
-  margin-top: 15px;
-  height: 20px;
-  border: none;
-  background-color: lightskyblue;
-  border-radius: 5px;
-  color: white;
-  text-align: center;
-  align-items: center;
-}
-
-.likeContainer{
-  display: flex;
   
 }

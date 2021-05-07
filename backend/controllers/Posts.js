@@ -17,8 +17,7 @@ exports.getAllPost = (req, res, next) => {
 
 exports.createPost = (req, res, next) => {
     const post = req.body;
-    const username = req.user.username
-    
+    post.username = req.user.username
     Posts.create(post)
     .then((post) => {
         res.status(201).json({post})
