@@ -3,6 +3,8 @@ import {useParams} from 'react-router-dom';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 import {AuthContext} from '../helpers/AuthContext'
+import Moment from 'react-moment';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
 
@@ -52,7 +54,9 @@ function Post() {
       }else{
         const commentToAdd = {
           commentBody:newComment,
-          username: response.data.username
+          username: response.data.username,
+          id: response.data.id,
+          createdAt: response.data.createdAt
         };
         setComments([...comments, commentToAdd]);
         setNewComment('');// will clear the last comment in the input  
@@ -109,9 +113,9 @@ function Post() {
            {
               authState.username ===postObject.username 
               &&
-            (<button onClick={() => {
+            (<DeleteIcon className="deleteBtn" onClick={() => {
               deleteOnePost(postObject.id)
-            }}>Delete</button>)
+            }} />)
            }
          
            </div>
@@ -131,17 +135,27 @@ function Post() {
          <div className="listOfComments">
            {comments.map((comment, key)=>{
              return <div key={key} className="comment">
-               {comment.commentBody}
-               <p>Username: {comment.username}</p>
-               <p>Date: {comment.createdAt}</p>
+               <div className="commentBody"> {comment.commentBody}
+               </div>
+               <div className="commentFooter">
+                 <p>Username: {comment.username}</p>
+                 <p>Date: <Moment format="YYYY/MM/DD hh:mm:ss">
+                   {comment.createdAt}
+                   </Moment>
+                 </p>
+
              
-               { 
-               authState.username ===comment.username 
-               && 
-               (<button onClick={() => {
-                 deleteComment(comment.id);
-               }}>Delete</button>)
-               }
+                 { 
+                 authState.username ===comment.username 
+                 && 
+                 (<DeleteIcon className="deleteBtn" onClick={() =>   {
+                   deleteComment(comment.id);
+                 }} />)
+                 }
+
+               </div>
+              
+               
                </div>
            })}
          </div>

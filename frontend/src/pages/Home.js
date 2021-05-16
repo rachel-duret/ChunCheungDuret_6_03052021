@@ -18,7 +18,7 @@ function Home() {
         } else{
           axios.get("http://localhost:8000/posts")
         .then((response)=>{
-         console.log(response.data);
+         //console.log(response.data);
           setListOfPosts(response.data)//后端添加include Likes， 所有现在ListOfPosts里面已经包含Likes的数据
          })
         }       
@@ -33,14 +33,18 @@ function Home() {
         }
        })
        .then((response) => {
-         console.log(response);      
+         //console.log(response);      
          setListOfPosts(listOfPosts.map((post)=>{
            if (post.id=== postId) {
              if (response.data.liked){// 后端设置liked为true or false， 如果为真就改变Likes里面的数据。
-              return {...post, Likes: [post.Likes, 0]};
+              console.log(response.data.like)
+              post.Likes.push(response.data.like)
+              return {...post, Like: [post.Likes, 0]};
+              
              }else{  // 如何为false就是代表取消like, 删除like数组里的最后一条记录
                const likeArray = post.Likes;
                likeArray.pop(); 
+               console.log(likeArray)
                return {...post, Like: likeArray };
              }
              
@@ -65,10 +69,10 @@ function Home() {
             </div>
 
             <div className="footer">
-              <p>
+              <p className="username">
               {value.username}
               </p>
-              <div className="likeContainer">
+              <div className="likeBtn">
               <ThumbUpIcon onClick={() => {
                 likePost(value.id)
               }} />

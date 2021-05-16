@@ -13,6 +13,7 @@ function CreatePost() {
     const initialValues ={
         title: "",
         postText:"",
+        imageUrl:null
     };
 
     useEffect(() => {
@@ -22,7 +23,15 @@ function CreatePost() {
         }
     }, [])
 
+    const setFiledValue = (files)=>{
+       
+       
+    }
+  
+
+
     const onSubmit =(data)=>{
+        console.log(data);
         /* let data = new initialValues();
         data.append('imageUrl', values.imageUrl) */
         console.log(data);
@@ -45,6 +54,7 @@ function CreatePost() {
     const validationSchema = yup.object().shape({
         title: yup.string().required('You must put a title!'),
         postText: yup.string().required(),
+        imageUrl:yup.mixed(),
         
     })
 
@@ -57,24 +67,31 @@ function CreatePost() {
     return (
         <div className="createPostPage">
             <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+                
                 <Form className="formContainer">
-                    <label>Title:</label>
+                    <label htmlFor="inputCreatePostTitle">Title:</label>
                     <ErrorMessage name="title" component="span" />
                     <Field              
-                    id="inputCreatePost" 
+                    id="inputCreatePostTitle" 
                     name="title" 
                     placeholder="(Ex. Title...)"
                     />
 
-                    <label>Post:</label>
+                    <label htlmlFor="inputCreatePostBody">Post:</label>
                     <ErrorMessage name="postText" component="span" />
                     <Field         
-                    id="inputCreatePost" 
+                    id="inputCreatePostBody" 
                     name="postText" 
                     placeholder="(Ex. Post...)"
                     />
+                    <input type="file" name="imageUrl" onChange={(event)=>{
+                         setFiledValue( event.currentTarget.files[0])
+                    }} />
+
+                 
                      
-                    <button type="submit">Create Post</button>
+                    <button className="createBtn" type="submit">Create Post</button>
+                    
                 </Form>
 
             </Formik>

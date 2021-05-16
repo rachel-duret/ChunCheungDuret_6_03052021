@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react'
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
-import logo from '../images/icon-up.png';
+import logo from '../images/icon.png';
 import {AuthContext} from '../helpers/AuthContext'
 
 
@@ -38,19 +38,25 @@ function Login() {
     return (
         <div className="loginContainer">
             <div className= "loginCantainerLeft">
+                <label htmlFor="loginUsername">Username</label>
                 <input type="text" 
+                id="loginUsername"
                 placeholder="Username"
                 onChange = {(event)=>{
                     setUsername(event.target.value);
                 }}
                 />
+                <label htmlFor="loginEmail">Email</label>
                 <input type="email" 
+                id="loginEmail"
                 placeholder="Email"
                 onChange = {(event)=>{
                     setEmail(event.target.value);
                 }}
                 />
+                <label htmlFor="loginPassword">Password</label>
                 <input type="password"
+                id="loginPassword"
                 placeholder="Password"
                 onChange = {(event)=>{
                     setPassword(event.target.value);
@@ -59,7 +65,7 @@ function Login() {
                 <button onClick={login}>Login</button>
             </div>
             <div className= "loginCantainerRight">
-                <img src ={logo} alt="Logo" id="logo"/>
+                <img src ={logo} alt="Logo" className="logo"/>
             </div>
            
         </div>

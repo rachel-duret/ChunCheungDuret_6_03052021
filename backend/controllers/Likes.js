@@ -14,8 +14,9 @@ exports.likes = (req, res, next) => {
                 PostId: PostId,
                 UserId: UserId
             })
-            .then(() => {
-                res.json({liked: true})
+            .then((like) => {
+                console.log(like);
+                res.json({liked: true, like: like})
             })
         }else{
             Likes.destroy({

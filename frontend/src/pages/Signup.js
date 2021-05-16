@@ -3,7 +3,7 @@ import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
-import logo from '../images/icon-up.png';
+import logo from '../images/icon.png';
 
 
 function Signup() {
@@ -31,7 +31,7 @@ function Signup() {
     return (
         <div className="loginContainer">
           <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
-                <Form className="formContainer">                  
+                <Form className="signupCantainerLeft">                  
                     <label>Username:</label>
                     <ErrorMessage name="username" component="span" />
                     <Field 
@@ -55,10 +55,10 @@ function Signup() {
                     name="password"
                     placeholder="Put your password 6-25..."
                     />
-                    <button type="submit">Singup</button>
+                    <button type="submit" className="signupBtn">Singup</button>
                 </Form>
             </Formik>
-            <div className="loginContainerLeft">
+            <div className="signupContainerRight">
             <img src ={logo} alt="Logo" className="logo"/>
             </div>
         </div>
