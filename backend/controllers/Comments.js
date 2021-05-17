@@ -21,10 +21,10 @@ exports.createComment = (req, res, next) =>{
     comment.username = username;
     Comments.create(comment)
     .then((comment) => {
-        res.json(comment)
+        res.status(201).json(comment)
     })
     .catch((error) => {
-        res.json({error});
+        res.status(400).json({error});
     });
 };
 
@@ -37,7 +37,10 @@ exports.deleteOneComment = (req, res, next) =>{
         }
     })
     .then(() => {
-        res.json('Comment Deleted Successfully !')
+        res.status(200).json('Comment Deleted Successfully !')
+    })
+    .catch((error) => {
+        res.status(500).json({error})
     })
     
 }

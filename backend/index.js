@@ -6,6 +6,8 @@ const cors = require('cors')
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const helmet = require('helmet');
+const morgan = require('morgan')
 
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.json());
@@ -25,6 +27,9 @@ app.use(session({
     }
 
 }))
+
+app.use(helmet());
+app.use(morgan('dev'));
 
 //Routers
 const PostsRouter = require('./routes/Posts');

@@ -17,7 +17,8 @@ exports.getAllPost = (req, res, next) => {
 
 exports.createPost = (req, res, next) => {
     const post = req.body;
-    post.username = req.user.username
+    post.username = req.user.username;
+    post.UserId = req.user.id;
     Posts.create(post)
     .then((post) => {
         res.status(201).json({post})
@@ -49,5 +50,8 @@ exports.deleteOnePost = (req, res, next) => {
     })
     .then(() => {
         res.json('Post Deleted Suceessfully !')
+    })
+    .catch((error) => {
+        res.status(500).json({error})
     })
 }

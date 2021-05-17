@@ -23,8 +23,12 @@ function Signup() {
     const onSubmit =(data)=>{
         axios.post("http://localhost:8000/auth/signup",data)
         .then((response)=>{
+            console.log(response);
             history.push('/');    
-        });
+        })
+        .catch((error) => {
+            alert(error + ", User already exist !")
+        })
     };
 
    

@@ -7,19 +7,32 @@ const {sign} = require('jsonwebtoken');
 
 exports.signup = (req, res, next) => {
     const {username, email, password} = req.body
-    bcrypt.hash(password, 10)
-    .then((hash)=>{
-        Users.create({
-            username: username,
-            email: email,
-            password: hash
-        })
-        res.status(201).json('User create success')
+    Users.findOne({
+        where: {username: username, email: email}
+    })
+    .then((found) =>{
+        if(found) {
+            res.status(401).json({error: 'User already exist!'})
+        }else{
+            bcrypt.hash(password, 10)
+            .then((hash) => {
+                Users.create({
+                    username: username,
+                    email: email,
+                    password: hash
+                })
+                res.status(201).json('User create success')
+            })
+            .catch((error) => {
+                res.status(400).json({error});
+            });
+            
+        }
     })
     .catch((error) => {
         res.status(500).json({error});
     });
-    
+
 };
 
 exports.login = (req, res, next) => {
@@ -56,8 +69,7 @@ exports.login = (req, res, next) => {
 }
 exports.info = (req, res, next) => {
     const user = req.user
-    res.json(user)
-    
+    res.json(user)   
 } ;
 
 exports.profile = (req, res, next) => {
