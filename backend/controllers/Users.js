@@ -1,6 +1,7 @@
 'use stric'
 
 const {Users} = require('../models');
+
 const bcrypt = require('bcrypt');
 const {sign} = require('jsonwebtoken');
 
@@ -57,4 +58,15 @@ exports.info = (req, res, next) => {
     const user = req.user
     res.json(user)
     
-} 
+} ;
+
+exports.profile = (req, res, next) => {
+    const id = req.params.id;
+    console.log(id);
+    Users.findByPk(id, {
+        attributes: { exclude: ["password"]},// no password send back 
+    })
+    .then((userInfo) => {
+        res.json(userInfo)
+    })
+}

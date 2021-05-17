@@ -4,6 +4,7 @@ import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as yup from 'yup';
 import {useHistory} from 'react-router-dom';
 import {AuthContext} from '../helpers/AuthContext'
+import icon from '../images/icon-left-font-monochrome-black.svg';
 
 
 
@@ -66,6 +67,7 @@ function CreatePost() {
 
     return (
         <div className="createPostPage">
+            <img src ={icon} alt="Logo icon" className="logo"/>
             <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
                 
                 <Form className="formContainer">

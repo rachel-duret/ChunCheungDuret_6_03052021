@@ -4,6 +4,7 @@ import{useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {AuthContext} from '../helpers/AuthContext'
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import icon from '../images/icon-left-font-monochrome-black.svg';
 
 function Home() {
 
@@ -43,6 +44,7 @@ function Home() {
               
              }else{  // 如何为false就是代表取消like, 删除like数组里的最后一条记录
                const likeArray = post.Likes;
+               console.log(likeArray);
                likeArray.pop(); 
                console.log(likeArray)
                return {...post, Like: likeArray };
@@ -57,6 +59,7 @@ function Home() {
 
     return (
         <div className="App">
+          <img src ={icon} alt="Logo icon" className="logo"/>
         {listOfPosts.map((value, key)=>{
 
           return <div key={key} className="post">

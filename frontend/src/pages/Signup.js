@@ -55,7 +55,7 @@ function Signup() {
                     name="password"
                     placeholder="Put your password 6-25..."
                     />
-                    <button type="submit" className="signupBtn">Singup</button>
+                    <button type="submit" className="signupBtn">Signup</button>
                 </Form>
             </Formik>
             <div className="signupContainerRight">

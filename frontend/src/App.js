@@ -5,6 +5,7 @@ import CreatePost from './pages/CreatePost';
 import Post from './pages/Post';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Profile from './pages/Profile';
 import PageNotFound from './pages/PageNotFound'
 //import {useHistory} from 'react-router-dom';
 import {AuthContext} from './helpers/AuthContext'
@@ -60,7 +61,7 @@ function App() {
             <div className="links">
               { !authState.status ? (
                 <>
-                  <Link to="/signup">Singup</Link>
+                  <Link to="/signup">Signup</Link>
                   <Link to="/login">Login</Link>
                 </>
               ) : (
@@ -71,7 +72,8 @@ function App() {
               )}           
             </div>
             <div className="loggedContainer">
-                <h1 className="username">{authState.username}</h1>  
+              {authState.status && (<h1 className="username">{authState.username}</h1>)}
+                  
                 {authState.status && <button className="logoutBtn" onClick={logout}>Logout</button>} 
             </div>             
           </div>
@@ -82,6 +84,7 @@ function App() {
             <Route path="/post/:id" exact component={Post} />
             <Route path ="/signup" exact component={Signup} />
             <Route path = "/login" exact component={Login} />
+            <Route path = "/profile/:id" exact component={Profile} />
             <Route path ="*" exact component={PageNotFound} />
           </Switch>
         </Router>

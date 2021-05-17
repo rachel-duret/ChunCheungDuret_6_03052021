@@ -3,7 +3,7 @@
   height: auto;
   display: flex;
   align-items: center;
-  padding-top: 40px;
+  padding-top: 20px;
   flex-direction: column;
 }
 
@@ -21,12 +21,13 @@
 .navbar {
   width: 100%;
   height: 80px;
-  background-color: rgb(82, 82, 122);
+  background-color: rgb(9, 31, 67);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
   font-family: Arial, Helvetica, sans-serif;
+  border-bottom: 10px solid rgb(209,81,90);
 }
 .links{
   flex: 50%;
@@ -52,14 +53,16 @@
   height: 30px;
   display: grid;
   place-content: center;
+  border: none;
 }
 .logoutBtn:hover{
-  background-color: rgb(223, 146, 146);
+  background-color: rgb(209, 81, 90);;
   cursor: pointer;
   
 }
 .username{
   text-transform: capitalize;
+  color: white;
 }
 
 
@@ -84,6 +87,7 @@
 .logo{ 
   width: 200px;
   height: auto;
+  margin: auto;
 
 }
 .loginContainerLeft{
@@ -101,7 +105,7 @@
   width: 100%;
   height: 50px;
   border-radius: 8px;
-  border: 1px solid rgb(82, 82, 122);
+  border: 1px solid rgb(209, 81, 90);
   margin: 10px;
 }
 
@@ -109,10 +113,10 @@
   margin-top: 15px;
   padding-top: 15px;
   border: none;
-  background-color: rgb(82, 82, 122);
+  background-color: rgb(209, 81, 90);
   border-radius: 5px;
   color: black;
-  font-weight: 500;
+  font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   align-items: center;
@@ -139,7 +143,7 @@
   width: 40%;
   height: 50px;
   border-radius: 8px;
-  border: 1px solid rgb(82, 82, 122);
+  border: 1px solid rgb(209, 81, 90);
   margin: 10px;
 }
 .signupCantainerLeft span{
@@ -151,10 +155,10 @@
   border: none;
   width: 40%;
   height: 50px;
-  background-color: rgb(82, 82, 122);
+  background-color: rgb(209, 81, 90);
   border-radius: 5px;
   color: black;
-  font-weight: 500;
+  font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   align-items: center;
@@ -174,7 +178,7 @@
   margin-top: 50px;
   border: 1px solid lightgray;
   font-family: Arial, Helvetica, sans-serif;
-
+  
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
@@ -183,10 +187,10 @@
   cursor: pointer;
 }
 .title {
-  min-width: 100%;
+  width: 100%;
   height: 50px;
   border-bottom: 1px solid lightgray;
-  background-color:rgb(82, 82, 122);
+  background-color:rgb(9, 31, 67);
   display: grid;
   place-content: center;
   color: white;
@@ -206,21 +210,25 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background-color: rgb(82, 82, 122);
-  color: white;
+  background-color: rgb(9, 31, 67);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   text-transform: capitalize;
+  color: white;
 }
 
 .likeBtn{
   display: flex;
   flex-direction: row;
+  color: white;
 
 
 }
 /* **************************************CreatePostPage********************************** */
 .createPostPage {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
   width: 100%;
   height: auto;
@@ -236,7 +244,7 @@
   width: 70%;
   height: auto;
   padding: 20px;
-  border: 5px solid  rgb(82, 82, 122);
+  border: 5px solid  rgb(209, 81, 90);
   border-radius: 5px;
 }
 
@@ -265,9 +273,9 @@
   width: 20%;
   height: 40px;
   border: none;
-  background-color: rgb(82, 82, 122);
+  background-color:  rgb(209, 81, 90);
   border-radius: 5px;
-  color: white;
+  color: black;
   font-weight: 700;
   display: grid;
   place-content: center;
@@ -277,7 +285,7 @@
 
 .formContainer button:hover {
   cursor: pointer;
-  background-color: dodgerblue;
+  
 }
 
 span {
@@ -285,6 +293,12 @@ span {
 }
 
 /* ******************************************************individualPage**************** */
+.postPageContainer{
+  padding-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .postPage {
   display: flex;
   flex-direction: row;
@@ -296,11 +310,12 @@ span {
   margin-top: 10px;
 }
 .deleteBtn:hover{
-  color: rgb(223, 146, 146);
+  color: rgb(209, 81, 90);
 }
 .leftSide {
   width: 50%;
   display:flex;
+  flex-direction: column;
   margin: auto;
   place-items: center;
 }
@@ -308,26 +323,30 @@ span {
 .rightSide {
   width: 50%;
   height: auto;
+  margin: auto;
   display: flex;
   flex-direction: column;
   place-items: center;
  
 }
 
+.addCommentContainer label{
+  font-weight: 700;
 
+}
 .addCommentContainer input {
-  margin-top: 40px;
   width: 100%;
   height: 100px;
   border-radius: 8px;
-  border: 2px solid rgb(82, 82, 122);
+  border: 2px solid rgb(209, 81, 90);
 }
 
 .addCommentContainer button {
   display: grid;
   place-content: center;
-  background-color: rgb(82, 82, 122);
-  color: white;
+  background-color: rgb(209, 81, 90);
+  color: black;
+  font-weight: 700;
 }
 
 
@@ -357,12 +376,12 @@ span {
   width: 100%;
   height: 50px;
   color: black;
-  border: 2px solid rgb(82, 82, 122);
+  border: 2px solid rgb(209, 81, 90);
   border-radius: 8px ;
 }
 .commentFooter{
   margin-top: 20px;
-  background-color:rgb(82, 82, 122); 
+  background-color:rgb(9, 31, 67); 
   border-radius: 0px 0px 8px 8px;
   color: white; 
   padding:2px 0px 0px 20px ;
@@ -392,8 +411,13 @@ span {
   .title,.body,.footer{
     width: 100%;
   }
+  .postPage{
+    margin: auto;
+   
+  }
   .leftSide,.rightSide{
     width: 100%;
+    margin: 20px auto;
     
   }
   
