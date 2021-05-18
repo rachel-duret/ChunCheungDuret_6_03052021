@@ -28,11 +28,11 @@ module.exports = (sequelize, DataTypes) =>{
 
   Users.associate = (models)=>{
  
-    Users.hasMany(models.Likes,
+    Users.hasMany(models.Likes, // userId will automatic generated in the Likes table
       {
         onDelete: "cascade", 
       });
-      Users.hasMany(models.Posts, 
+      Users.hasMany(models.Posts,// userId will automatic generated in the Posts table
       {
         onDelete: "cascade"
       })

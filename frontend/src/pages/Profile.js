@@ -1,25 +1,53 @@
 import React, {useEffect, useState} from 'react'
-import {useParams} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 import axios from 'axios';
+import icon from '../images/icon-left-font-monochrome-black.svg';
 
 function Profile() {
+    let history = useHistory();
     let {id }= useParams();
     const [username, setUsername] = useState("");
+    const [listOfPosts, setListOfPosts] = useState([])
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/auth/profile/${id}`)
+        axios.get(`http://localhost:8000/auth/profile/${id}`)// send a request to get user data
         .then((response) => {
             setUsername(response.data.username)
-            console.log(response)
+            //console.log(response)
 
         })
-    })
+    });
+
+    useEffect(() => {
+        axios.get(`http://localhost:8000/posts/byUserId/${id}`)// send a request to get all posts of this user
+        .then((response) => {
+            console.log(response);
+            setListOfPosts(response.data);
+        })
+    },[])
     return (
         <div className="profilePageContainer">
+            <img src ={icon} alt="Logo icon" className="logo"/>
             <div className="userInfo">
-                <h1>Username:{username}</h1>
+                <h1 >Username:{username}</h1>
             </div>
-            <div className="listOfPosts"></div>
+            <div className="listOfPosts">
+                {listOfPosts.map((value, key) => {
+                   
+                 return <div key={key} className="post">
+                        <div className="title">{value.title}</div>
+                        <div className="body" onClick={() => {
+                            history.push(`/post/${value.id}`)
+                        }}>
+                            {value.postText}
+                        </div>
+                        <div className="footer">
+                            <div className="username">{value.username}</div> 
+                             <p>{value.Likes.length} Likes</p>
+                        </div>                      
+                    </div>
+                })}
+            </div>
            
         </div>
     )

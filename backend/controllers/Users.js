@@ -76,9 +76,9 @@ exports.profile = (req, res, next) => {
     const id = req.params.id;
     console.log(id);
     Users.findByPk(id, {
-        attributes: { exclude: ["password"]},// no password send back 
+        attributes: { exclude: ["password"]},// tell mysql don't send  password back 
     })
     .then((userInfo) => {
-        res.json(userInfo)
+        res.status(200).json(userInfo)
     })
 }

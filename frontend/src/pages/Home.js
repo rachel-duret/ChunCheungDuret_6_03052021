@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import axios from 'axios';
 import{useEffect, useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 import {AuthContext} from '../helpers/AuthContext'
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import icon from '../images/icon-left-font-monochrome-black.svg';
@@ -73,7 +73,9 @@ function Home() {
 
             <div className="footer">
               <p className="username">
-              {value.username}
+                <Link to={`/profile/${value.UserId}`}>
+                  {value.username}
+                </Link>             
               </p>
               <div className="likeBtn">
               <ThumbUpIcon onClick={() => {

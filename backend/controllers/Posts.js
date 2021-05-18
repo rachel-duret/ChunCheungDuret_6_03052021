@@ -39,6 +39,21 @@ exports.findOnePost = (req, res, next) => {
     });
 }
 
+exports.profilePosts = (req, res, next) => {
+    const id = req.params.id;
+    Posts.findAll({
+        where: {UserId: id},
+        include: [Likes], // to access Likes table to show how many likes in the post.
+    })
+    .then((listOfPosts) => {
+        res.status(200).json(listOfPosts);
+    })
+    .catch((error) => {
+        res.status(400).json(error);
+    });
+
+};
+
 
 exports.deleteOnePost = (req, res, next) => {
     const postId = req.params.id
