@@ -113,7 +113,9 @@ function Post() {
             <div className="title"> {postObject.title}</div>
             <div className="body"> {postObject.postText}</div>
             <div className="footer">
+              <p>
               {postObject.username}
+              </p>
               {
                   authState.username ===postObject.username 
                   &&
@@ -121,10 +123,11 @@ function Post() {
                   deleteOnePost(postObject.id)
                 }} />)
               }
+             
             </div>
          </div>
          {/* ******************************************************CommentSide *************************/}
-         <div className="rigtSide">
+         <div className="rightSide">
            <div className="addCommentContainer">
                <label htmlFor="comment">Comment</label>
                <input 

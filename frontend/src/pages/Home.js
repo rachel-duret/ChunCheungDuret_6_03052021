@@ -21,6 +21,7 @@ function Home() {
         .then((response)=>{
          //console.log(response.data);
           setListOfPosts(response.data)//后端添加include Likes， 所有现在ListOfPosts里面已经包含Likes的数据
+         
          })
         }       
       }, []);

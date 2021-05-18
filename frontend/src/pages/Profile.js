@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {useParams, useHistory} from 'react-router-dom';
 import axios from 'axios';
 import icon from '../images/icon-left-font-monochrome-black.svg';
+import {AuthContext} from '../helpers/AuthContext'
 
 function Profile() {
     let history = useHistory();
@@ -24,12 +25,14 @@ function Profile() {
             console.log(response);
             setListOfPosts(response.data);
         })
-    },[])
+    },[]);
+
+    
     return (
-        <div className="profilePageContainer">
+        <div className="App">
             <img src ={icon} alt="Logo icon" className="logo"/>
             <div className="userInfo">
-                <h1 >Username:{username}</h1>
+                <h1 >Username:<label>{username}</label></h1>
             </div>
             <div className="listOfPosts">
                 {listOfPosts.map((value, key) => {
@@ -42,7 +45,7 @@ function Profile() {
                             {value.postText}
                         </div>
                         <div className="footer">
-                            <div className="username">{value.username}</div> 
+                            <p className="username">{value.username}</p> 
                              <p>{value.Likes.length} Likes</p>
                         </div>                      
                     </div>
