@@ -24,12 +24,8 @@ function CreatePost() {
         }
     }, [])
 
-    const setFiledValue = (files)=>{
-       
-       
-    }
-  
-
+    /* const setFiledValue = (files)=>{       
+    } */
 
     const onSubmit =(data)=>{
         console.log(data);
@@ -86,12 +82,9 @@ function CreatePost() {
                     name="postText" 
                     placeholder="(Ex. Post...)"
                     />
-                    <input type="file" name="imageUrl" onChange={(event)=>{
+                    {/* <input type="file" name="imageUrl" onChange={(event)=>{
                          setFiledValue( event.currentTarget.files[0])
-                    }} />
-
-                 
-                     
+                    }} /> */}                    
                     <button className="createBtn" type="submit">Create Post</button>
                     
                 </Form>
