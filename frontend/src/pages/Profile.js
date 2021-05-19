@@ -34,13 +34,14 @@ function Profile() {
             <div className="userInfo">
                 <h1 >Username:<label>{username}</label></h1>
             </div>
+            {/* ***********************all the posts of this user********************************** */}
             <div className="listOfPosts">
                 {listOfPosts.map((value, key) => {
                    
                  return <div key={key} className="post">
                         <div className="title">{value.title}</div>
                         <div className="body" onClick={() => {
-                            history.push(`/post/${value.id}`)
+                            history.push(`/post/${value.id}`)   
                         }}>
                             {value.postText}
                         </div>

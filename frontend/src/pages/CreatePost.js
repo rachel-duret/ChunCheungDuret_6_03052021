@@ -75,7 +75,7 @@ function CreatePost() {
                     placeholder="(Ex. Title...)"
                     />
 
-                    <label htlmlFor="inputCreatePostBody">Post:</label>
+                    <label htmlFor="inputCreatePostBody">Post:</label>
                     <ErrorMessage name="postText" component="span" />
                     <Field         
                     id="inputCreatePostBody" 

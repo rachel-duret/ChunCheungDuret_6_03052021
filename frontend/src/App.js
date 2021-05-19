@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Link, Redirect} from 'react-router-dom';
 import Home from './pages/Home';
 import CreatePost from './pages/CreatePost';
 import Post from './pages/Post';
@@ -10,10 +10,12 @@ import PageNotFound from './pages/PageNotFound'
 import {AuthContext} from './helpers/AuthContext'
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-
+import { createBrowserHistory } from "history";
 
 
 function App() {
+  let  history = createBrowserHistory();
+
   //首先设置authState 为没有
   const [authState, setAuthState] = useState({
     username:"",
@@ -50,6 +52,10 @@ function App() {
       id:0,
       status:false
      });
+    history.push('/login');
+    window.location.reload();
+
+
   }
   
   return (
