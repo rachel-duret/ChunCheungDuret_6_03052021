@@ -8,7 +8,7 @@ import logo from '../images/icon.png';
 
 function Signup() {
     let history = useHistory()
-    const initialValues ={
+    const initialValues ={ // 
         username:"",
         email:"",
         password:"",
@@ -20,7 +20,7 @@ function Signup() {
         password: yup.string().min(6).max(25).required(),
     })
 
-    const onSubmit =(data)=>{
+    const onSubmit =(data)=>{ //send a request to check signup data, if there has not error then create a account, 
         axios.post("http://localhost:8000/auth/signup",data)
         .then((response)=>{
             console.log(response);

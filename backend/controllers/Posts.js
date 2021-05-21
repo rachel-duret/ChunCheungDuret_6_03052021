@@ -7,7 +7,7 @@ const fs = require('fs');
 exports.getAllPost = (req, res, next) => {
     Posts.findAll({
         include: [Likes],
-    })// 可以把Likes里面的数据一起找到然后发送给前端。
+    })// add table Likes in Posts data  send to frontend for the Like function.
     .then((posts) => {
         res.status(200).json(posts)
     })

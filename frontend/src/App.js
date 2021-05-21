@@ -24,7 +24,7 @@ function App() {
   });
 
   useEffect(() => {
-    //检测本地存储是否有token， 有的话就把authState 变成true
+    //检测本地存储是否有token， 有的话就把authState 变成true  send a request to check is there has a token in localstorage or not. 
     axios.get('http://localhost:8000/auth/info',
     {
       headers:{
@@ -33,7 +33,7 @@ function App() {
     })
     .then((response) => {
     
-      if(response.data.error){
+      if(response.data.error){// if there is has not a token, then set auth status = false
         setAuthState({...authState, status:false});
       }else{
         setAuthState({
@@ -45,6 +45,7 @@ function App() {
     });  
   }, [])
 
+  /* ************************************logout function *********************************/
   const logout = () =>{
     localStorage.removeItem("accessToken");
      setAuthState({
@@ -54,7 +55,6 @@ function App() {
      });
     history.push('/login');
     window.location.reload();
-
 
   }
   
