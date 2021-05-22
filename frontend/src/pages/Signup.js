@@ -36,14 +36,14 @@ function Signup() {
         <div className="loginContainer">
           <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
                 <Form className="signupCantainerLeft">                  
-                    <label>Username:</label>
+                    <label htmlFor="username">Username:</label>
                     <ErrorMessage name="username" component="span" />
                     <Field 
                     id="username" 
                     name="username" 
                     placeholder="(Ex. Rachel...)"
                     />
-                    <label>Email:</label>
+                    <label htmlFor="email">Email:</label>
                     <ErrorMessage name="email" component="span" />
                     <Field 
                     id="email" 
@@ -51,7 +51,7 @@ function Signup() {
                     placeholder="(Ex. Rachel1984@gmail.com....)"
                     />
 
-                    <label>password</label>
+                    <label htmlFor="password">password</label>
                     <ErrorMessage name="password" component="span" />
                     <Field
                     type="password"
