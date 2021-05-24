@@ -50,7 +50,6 @@ function Signup() {
                     name="email" 
                     placeholder="(Ex. Rachel1984@gmail.com....)"
                     />
-
                     <label htmlFor="password">password</label>
                     <ErrorMessage name="password" component="span" />
                     <Field
